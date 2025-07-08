@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { useCart } from '@/context/CartContext';
+import Link from 'next/link';
 
 
 const ProductItem = ({ product }) => {
@@ -16,24 +17,26 @@ const ProductItem = ({ product }) => {
   };
 
   return (
-    <div className="group relative bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl">
+    <div className="group relative bg-white rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl">
       {/* 图片容器 */}
       <div className="relative overflow-hidden aspect-square bg-gray-100 cursor-pointer">
         {/* 默认图 */}
-        <Image
-          src={product.defaultImage}
-          alt={product.name}
-          fill
-          className="object-cover transition-opacity duration-300 group-hover:opacity-0"
-          priority
-        />
-        {/* 悬停图 */}
-        <Image
-          src={product.hoverImage}
-          alt={`${product.name} hover`}
-          fill
-          className="object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100"
-        />
+        <Link href="/product/1">
+          <Image
+            src={product.defaultImage}
+            alt={product.name}
+            fill
+            className="object-cover transition-opacity duration-300 group-hover:opacity-0"
+            priority
+          />
+          {/* 悬停图 */}
+          <Image
+            src={product.hoverImage}
+            alt={`${product.name} hover`}
+            fill
+            className="object-cover transition-opacity duration-300 opacity-0 group-hover:opacity-100"
+          />
+        </Link>
 
         {/* 添加购物车按钮 */}
         <button

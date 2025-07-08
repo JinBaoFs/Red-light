@@ -15,7 +15,7 @@ export default function ProductImageGallery({ images = [] }) {
   const slides = images.map((src) => ({ src }))
 
   return (
-    <div className="w-full flex flex-col">
+    <div className="w-full md:w-1/2 flex flex-col">
       {/* ⬇ 主图滑动区域容器 */}
       <div className="relative w-full max-w-xl aspect-[1/1] overflow-hidden rounded-md border">
         <div

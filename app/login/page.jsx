@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { post } from "@/utils/api"
 
 export default function AuthPage() {
   const [isLogin, setIsLogin] = useState(true);
@@ -13,10 +14,24 @@ export default function AuthPage() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     if (isLogin) {
-      console.log('Login:', form);
+      const res = await post('/oauth/token',
+        {
+          username: "tom", 
+          password: "123456",
+          grant_type: "password"
+        },
+        {
+          headers:{
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Authorization": "Basic bXktdHJ1c3RlZC1jbGllbnQ6c2VjcmV0"
+          }
+        }
+      )
+      console.log(res)
+      // console.log('Login:', form);
       // 调用登录 API
     } else {
       console.log('Register:', form);

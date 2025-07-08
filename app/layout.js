@@ -18,7 +18,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={inter.className}>
-      <script src="https://www.paypal.com/sdk/js?client-id=ATbHmUD7kjh5sRO8YEKwsSlT1yHtQcnY8nuDBSsbEV4htpfHeIknFHR1Rinc867Li5_6NCwlczZVShpI&currency=USD" async></script>
       <head />
       <body className="min-h-screen flex flex-col">
         <CartProvider>

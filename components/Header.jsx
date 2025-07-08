@@ -6,7 +6,7 @@ import { useCart } from '../context/CartContext';
 import CartSidebar from './CartSidebar';
 
 const navItems = [
-  { label: 'Red Light Therapy Cap', href: '#' },
+  { label: 'Red Light Therapy Cap', href: '/product-center' },
   {
     label: 'Red Light Therapy Panel',
     href: '#',

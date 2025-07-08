@@ -1,5 +1,4 @@
 import { products } from '../lib/products';
-import { ProductCard } from '../components/ProductCard';
 import ScrollFadeUpSection from "../components/ScrollFadeUpSection"
 import RedLightTherapyProducts from '@/components/RedLightTherapyProducts';
 import Link from 'next/link';

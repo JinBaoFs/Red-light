@@ -1,33 +1,42 @@
-// components/PayPalButton.jsx
 'use client';
-import { useEffect } from 'react';
 
-export function PayPalButton({ price }) {
-  useEffect(() => {
-    if (typeof window !== 'undefined' && window.paypal) {
-      window.paypal.Buttons({
-        createOrder: (_, actions) => {
-          return actions.order.create({
-            purchase_units: [
-              {
-                amount: {
-                  value: price.toFixed(2)
-                }
-              }
-            ]
-          });
-        },
-        onApprove: async (_, actions) => {
-          const details = await actions.order.capture();
-          alert(`✅ Payment completed by ${details.payer.name.given_name}`);
-        },
-        onError: (err) => {
-          console.error('❌ PayPal error:', err);
-          alert('PayPal payment failed');
-        }
-      }).render('#paypal-button-container');
-    }
-  }, [price]);
+import { PayPalButtons } from '@paypal/react-paypal-js';
 
-  return <div id="paypal-button-container"></div>;
+export default function PayPalButton({ amount, onSuccess }) {
+  return (
+    <PayPalButtons
+      style={{
+        layout: 'horizontal', // 横向排列
+        color: 'gold',        // 金黄色背景
+        shape: 'rect',        // 矩形按钮
+        label: 'paypal',      // 显示 PayPal logo
+        height: 48,           // 调整高度
+        tagline: false,       // 不显示小字标语
+      }}
+      forceReRender={[amount]}
+      createOrder={(data, actions) => {
+        return actions.order.create({
+          purchase_units: [
+            {
+              amount: {
+                value: amount,
+              },
+            },
+          ],
+        });
+      }}
+      onApprove={(data, actions) => {
+        return actions.order.capture().then((details) => {
+          console.log('支付成功：', details);
+          if (onSuccess) {
+            onSuccess(details);
+          }
+        });
+      }}
+      onError={(err) => {
+        console.error('PayPal 错误：', err);
+        alert('支付失败，请稍后再试');
+      }}
+    />
+  );
 }
