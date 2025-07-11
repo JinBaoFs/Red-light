@@ -1,4 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from 'next/script'
 import { CartProvider } from '../context/CartContext';
 import "./globals.css";
 import Header from '@/components/Header';
@@ -18,7 +19,20 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={inter.className}>
-      <head />
+      <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-J3D2TK9F0"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){ dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'G-J3D2TK9F0');
+          `}
+        </Script>
+      </head>
       <body className="min-h-screen flex flex-col">
         <CartProvider>
           <Header />
