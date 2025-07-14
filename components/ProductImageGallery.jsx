@@ -34,12 +34,12 @@ export default function ProductImageGallery({ images = [] }) {
         </div>
 
         {/* 放大镜按钮 */}
-        <button
+        {/* <button
           className="cursor-pointer absolute bottom-2 right-2 p-2 bg-white border rounded-full shadow-md hover:bg-gray-100"
           onClick={() => setOpen(true)}
         >
           <FiSearch size={18} />
-        </button>
+        </button> */}
       </div>
 
       {/* 缩略图导航栏 */}

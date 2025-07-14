@@ -76,7 +76,7 @@ export default function Home() {
               <p className="text-gray-700 mb-6">
                 Red light therapy cap ideal for hair regrowth & headache pain relief and insomnia troubles with clinically proven.
               </p>
-              <Link href="/product/red-light-cap">
+              <Link href="/product/1">
                 <button className="bg-[#f15b2a] cursor-pointer hover:bg-[#d94916] text-white font-bold py-3 px-6 rounded transition">SHOP NOW</button>
               </Link>
             </div>
@@ -123,7 +123,7 @@ export default function Home() {
               <p className="text-gray-700 mb-6">
                 With our innovative, handheld device that delivers concentrated, medically-grade wavelengths of light, get recovered from cold sores!
               </p>
-              <Link href="/product/red-light-cap">
+              <Link href="/product/1">
                 <button className="bg-[#f15b2a] hover:bg-[#d94916] text-white font-bold py-3 px-6 rounded transition">
                   SHOP NOW
                 </button>
