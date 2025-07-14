@@ -4,21 +4,59 @@ import Link from 'next/link';
 import { FiSearch, FiUser, FiShoppingCart } from 'react-icons/fi';
 import { useCart } from '../context/CartContext';
 import CartSidebar from './CartSidebar';
+import Image from 'next/image';
 
 const navItems = [
   { label: 'Red Light Therapy Cap', href: '/product-center' },
   {
     label: 'Red Light Therapy Panel',
     href: '#',
-    subItems: ['IPR-001', 'IPR-002', 'IPR-003', 'IPR-004', 'IPR-005']
+    subItems: [
+      {
+        id: 1,
+        image: "/images/pro_01.jpg",
+        name: "IMG-01"
+      },
+      {
+        id: 1,
+        image: "/images/pro_01.jpg",
+        name: "IMG-02"
+      },
+      {
+        id: 1,
+        image: "/images/pro_01.jpg",
+        name: "IMG-03"
+      }
+    ]
   },
   { 
     label: 'Red Light Therapy Belt',
     href: '#',
-    subItems: ['APR-001', 'APR-002', 'APR-003', 'APR-004', 'APR-005']
+    subItems: [
+      {
+        id: 1,
+        image: "/images/pro-02.webp",
+        name: "IMG-01"
+      },
+      {
+        id: 1,
+        image: "/images/pro-01.webp",
+        name: "IMG-02"
+      },
+      {
+        id: 1,
+        image: "/images/pro-02.webp",
+        name: "IMG-03"
+      },
+      {
+        id: 1,
+        image: "/images/pro-01.webp",
+        name: "IMG-02"
+      },
+    ]
   },
-  { label: 'Cold Sore Treatment Device', href: '#' },
-  { label: 'Contact', href: '#' }
+  { label: 'Cold Sore Treatment Device', href: '/product-center' },
+  { label: 'Contact', href: '/contact' }
 ];
 
 export default function Header() {
@@ -88,9 +126,10 @@ export default function Header() {
                 {item.subItems.map((sub, index) => (
                   <div 
                     key={index} 
-                    className="hover:text-orange-500 cursor-pointer transition-colors"
+                    className="flex flex-col items-center cursor-pointer"
                   >
-                    {sub}
+                    <Link href={`/product/${sub.id}`}><img src={sub.image}></img></Link>
+                    <div>{sub.name}</div>
                   </div>
                 ))}
               </div>
