@@ -1,8 +1,9 @@
-'use client'
+'use client';
 
+import { Suspense } from "react";
 import { useSearchParams, useRouter } from 'next/navigation'
 
-export default function PayPalSuccessPage() {
+function PayPalSuccessContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const orderId = searchParams.get('id') || 'N/A'
@@ -30,5 +31,13 @@ export default function PayPalSuccessPage() {
         </button>
       </div>
     </div>
+  )
+}
+
+export default function PayPalSuccessPage() {
+  return (
+    <Suspense fallback={<div>加载中...</div>}>
+      <PayPalSuccessContent />
+    </Suspense>
   )
 }
